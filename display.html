@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibrant Spaces | Display Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    /* Specific styles for collection pages */
+    .collection-hero {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Simple parallax */
+    }
+    .collection-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    .collection-hero h1 {
+      position: relative;
+      font-size: 5rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      z-index: 1;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .collection-content {
+      padding: 6rem 10%;
+      background-color: var(--bg-panel);
+      min-height: 100vh;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+    .collection-content h2 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+    }
+    .collection-content h2:first-child {
+      margin-top: 0;
+    }
+    .collection-content p {
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+    /* Simple fade in animation class */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="main-header">
+    <div class="header-logo-section">
+      <a href="/" style="text-decoration:none;">
+        <div class="vibrant-logo-text">Vibrant<span>SPACES</span></div>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a href="/kitchen.html">Kitchen</a>
+      <a href="/wardrobe.html">Wardrobe</a>
+      <a href="/pooja-unit.html">Pooja Unit</a>
+      <a href="/display.html" style="color:var(--accent-color)">Display</a>
+      <a href="/furniture.html">Furniture</a>
+      <a href="/wellness-zones.html">Wellness Zones</a>
+    </nav>
+    <a href="tel:9543195431" class="header-phone">95431 95431</a>
+  </header>
+
+  <div class="collection-hero" style="background-image: url('/chapter5-living.png');">
+    <h1>Display</h1>
+  </div>
+
+  <div class="collection-content">
+    <div class="fade-in-section alternating-section">
+      <div class="alternating-text">
+        <h2>The Versatile Piece</h2>
+        <p>Over the years, display units have morphed to assume many roles. They have come to be more than just a place where you proudly show off your mementos and memoirs. Contemporary display units can be used to separate an open floor plan, or just to give a facelift to the space. For instance, a display unit that conceals the pooja room within can help blend a traditional space into your contemporary home.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/method-listen.png" alt="Versatile Display Unit">
+      </div>
+    </div>
+
+    <div class="fade-in-section alternating-section reverse">
+      <div class="alternating-text">
+        <h2>Endless Possibilities</h2>
+        <p>So, whether it’s a modernised server in your dining room that holds your china, a bar display, your library, a TV unit, a gaming station or even a stylised wall that acts as a focal point; a display unit is among the most versatile pieces in a home.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/hero-placeholder.png" alt="Display Possibilities">
+      </div>
+    </div>
+
+    <div class="fade-in-section alternating-section">
+      <div class="alternating-text">
+        <h2>Enhance Your Theme</h2>
+        <p>When planned well, the right display can enhance the theme of your interiors, whether you opt for a cosy, minimalist, traditional, rustic or contemporary look. Which makes it crucial for you to get the perfect display unit for your space. Talk to some of the best interior decorators in Chennai to nail down the perfect piece for you.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/chapter5-living.png" alt="Enhance Interior Theme">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple intersection observer for scroll animations
+    document.addEventListener("DOMContentLoaded", function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>

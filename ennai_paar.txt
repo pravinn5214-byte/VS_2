@@ -1,0 +1,2 @@
+cd "E:\work\Trail vibrant\ag ATMP day 2\hero-app"
+npm.cmd run dev

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibrant Spaces | Premium Storytelling Experience</title>
+  <!-- Google Fonts for Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body class="intro-active">
+  <!-- Global Navigation Header -->
+  <header class="main-header">
+    <div class="header-logo-section">
+      <div class="vibrant-logo-text">Vibrant<span>SPACES</span></div>
+    </div>
+    <nav class="header-nav">
+      <a href="/kitchen.html">Kitchen</a>
+      <a href="/wardrobe.html">Wardrobe</a>
+      <a href="/pooja-unit.html">Pooja Unit</a>
+      <a href="/display.html">Display</a>
+      <a href="/furniture.html">Furniture</a>
+      <a href="/wellness-zones.html">Wellness Zones</a>
+    </nav>
+    <a href="tel:9543195431" class="header-phone">95431 95431</a>
+  </header>
+
+  <!-- Intro Video Screen overlay -->
+  <div id="intro-container">
+    <video id="intro-video" muted playsinline autoplay src="/intro.mp4"></video>
+    <div id="skip-intro">Skip Intro</div>
+  </div>
+
+  <!-- The tall wrapper forces the page to have scrollable height -->
+  <main class="hero-scroll-wrapper">
+    <!-- Intro wrapper controls the sticky scroll height for the canvas -->
+    <div class="intro-scroll-section">
+      <!-- The sticky section that stays in the viewport for Chapter 1 -->
+      <section class="hero-sticky-container" id="chapter-intro">
+        <!-- Left Side: Editorial Content overlaying the canvas -->
+        <div class="hero-content">
+          <div class="content-inner">
+            <h1 class="hero-headline">Vibrant Spaces</h1>
+            <p class="hero-paragraph">
+              Every beautiful story needs a home. A place where whispered dreams take shape, where morning light dances on your walls, and where every corner hums with love. Scroll to begin your next chapter.
+            </p>
+            <button class="cta-button"
+              onclick="document.getElementById('chapter-about').scrollIntoView({behavior: 'smooth'})">
+              Explore Collection
+              <span class="arrow-icon">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Background: Canvas Animation (Full Screen) -->
+        <div class="hero-canvas-container">
+          <canvas id="hero-canvas"></canvas>
+          <div class="loading-overlay" id="loading-overlay">
+            <div class="spinner"></div>
+            <p>Loading frames...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2 & 3: About & What Makes Us Special (Philosophy Theme: Dark Midnight Lavender Parallax) -->
+      <section class="story-panel diagonal-transition philosophy-theme" id="chapter-about">
+        <!-- Floating Dynamic Parallax Text in background -->
+        <div class="parallax-bg-text">VIBRANT</div>
+
+        <div class="panel-content diagonal-left">
+          <div class="tag">Section 02 // Philosophy</div>
+          <h2 class="stacked-headline">
+            <span>A gentle touch.</span>
+            <span>A shared dream.</span>
+            <span>A lifelong memory.</span>
+          </h2>
+          <p class="desc-text text-contrast">
+            We believe your home is the most intimate autobiography you will ever write. It is not just about walls and roofs; it is about creating a sanctuary where you can pause time, love deeply, and belong completely.
+          </p>
+          <p class="philosophy-quote side-quote">
+            "We weave poetry into spaces. Your happily ever after begins with the perfect setting."
+          </p>
+          <div class="accent-link-wrapper">
+            <a href="https://vibarntspaces.in" target="_blank" class="accent-link">vibarntspaces.in</a>
+          </div>
+        </div>
+
+        <div class="panel-content diagonal-right highlight-box">
+          <div class="tag">Section 03 // Pillars</div>
+          <h2>What Makes Us Special</h2>
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <h3>Crafted with Love</h3>
+              <p>Every stroke of design is poured with warmth, ensuring your space feels like an eternal embrace.</p>
+            </div>
+            <div class="pillar-card">
+              <h3>Handpicked Elements</h3>
+              <p>Materials chosen not just for luxury, but for the feelings they evoke and the stories they hold.</p>
+            </div>
+            <div class="pillar-card">
+              <h3>Enduring Promise</h3>
+              <p>A commitment that stands the test of time, just like the memories you will build within these walls.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Services Offered (Horizontal Sticky Scrolling Theme: Steps I to V) -->
+      <div class="horizontal-scroll-container" id="chapter-services-sticky">
+        <div class="horizontal-sticky-element">
+          <div class="horizontal-slides-wrapper">
+            <!-- Slide 1: Listen -->
+            <div class="horizontal-slide">
+              <div class="slide-bg-text">Listen</div>
+              <div class="slide-content-left">
+                <div class="step-badge">Step 1 of 5</div>
+                <div class="roman-numeral">I</div>
+                <h3>Listen</h3>
+                <p class="slide-quote">"Every home begins as a feeling."</p>
+                <p class="slide-desc">We listen to the unspoken whispers of your heart. Tell us about your fondest memories, your wildest dreams, and the warmth you crave. We translate your emotions into a canvas of belonging.</p>
+                <div class="slide-nav-dots">
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+              <div class="slide-image-right">
+                <div class="image-frame">
+                  <img src="/method-listen.png" alt="Listen" />
+                  <div class="floating-label">Material Study</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Imagine -->
+            <div class="horizontal-slide slide-reverse">
+              <div class="slide-bg-text">Imagine</div>
+              <div class="slide-image-left">
+                <div class="image-frame">
+                  <img src="/method-imagine.png" alt="Imagine" />
+                  <div class="floating-label">Modern Boho Heaven</div>
+                </div>
+              </div>
+              <div class="slide-content-right">
+                <div class="step-badge">Step 2 of 5</div>
+                <div class="roman-numeral">II</div>
+                <h3>Imagine</h3>
+                <p class="slide-quote">"See it before it exists."</p>
+                <p class="slide-desc">Close your eyes and let us paint the future. We bring your vision to life through beautiful visualizations, allowing you to walk hand-in-hand through the romantic sanctuary we are building together.</p>
+                <div class="slide-nav-dots">
+                  <span class="dot"></span>
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Craft -->
+            <div class="horizontal-slide">
+              <div class="slide-bg-text">Craft</div>
+              <div class="slide-content-left">
+                <div class="step-badge">Step 3 of 5</div>
+                <div class="roman-numeral">III</div>
+                <h3>Craft</h3>
+                <p class="slide-quote">"Built by hands that care."</p>
+                <p class="slide-desc">With delicate precision and an artisan's soul, our craftsmen sculpt your sanctuary. It's a symphony of tradition and care, where every detail is nurtured like a blossoming flower.</p>
+                <div class="slide-nav-dots">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+              <div class="slide-image-right">
+                <div class="image-frame">
+                  <img src="/method-craft.png" alt="Craft" />
+                  <div class="floating-label">Precision Cut</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5: Execute -->
+            <div class="horizontal-slide slide-reverse">
+              <div class="slide-bg-text">Execute</div>
+              <div class="slide-image-left">
+                <div class="image-frame">
+                  <img src="/method-execute.png" alt="Execute" />
+                  <div class="floating-label">On-Site Assembly</div>
+                </div>
+              </div>
+              <div class="slide-content-right">
+                <div class="step-badge">Step 4 of 5</div>
+                <div class="roman-numeral">IV</div>
+                <h3>Execute</h3>
+                <p class="slide-quote">"Precision meets reality."</p>
+                <p class="slide-desc">Like a beautiful ballet, our team dances through the creation process. Every step is perfectly harmonized, ensuring your dream space unfolds seamlessly and gracefully before your very eyes.</p>
+                <div class="slide-nav-dots">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6: Deliver -->
+            <div class="horizontal-slide">
+              <div class="slide-bg-text">Deliver</div>
+              <div class="slide-content-left">
+                <div class="step-badge">Step 5 of 5</div>
+                <div class="roman-numeral">V</div>
+                <h3>Deliver</h3>
+                <p class="slide-quote">"Welcome home."</p>
+                <p class="slide-desc">The moment you step through the door, you realize you're finally home. A pristine, lovely sanctuary awaits you, ready to be filled with laughter, love, and a thousand beautiful tomorrows.</p>
+                <div class="slide-nav-dots">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot active"></span>
+                </div>
+              </div>
+              <div class="slide-image-right">
+                <div class="image-frame">
+                  <img src="/method-deliver.png" alt="Deliver" />
+                  <div class="floating-label">Final Handover</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: Process Steps (Canvas Scroll Theme) -->
+      <section class="process-scroll-section process-theme" id="chapter-process">
+        <div class="process-sticky-container">
+          <div class="process-header">
+            <div class="tag">Section 05 // Path to Creation</div>
+            <h2>The Design Process</h2>
+          </div>
+
+          <div class="process-canvas-wrapper">
+            <canvas id="process-canvas"></canvas>
+            <div class="process-loading-overlay" id="process-loading-overlay">
+              <div class="spinner"></div>
+            </div>
+          </div>
+
+          <div class="process-text-overlays">
+            <div class="process-step-text" id="process-step-1">
+              <div class="process-arrow"></div>
+              <div class="step-num">01</div>
+              <h4>Order</h4>
+              <p>Initiate your journey with our core team. We begin by understanding your base requirements and setting the stage for innovation.</p>
+            </div>
+            <div class="process-step-text right-side" id="process-step-2">
+              <div class="process-arrow"></div>
+              <div class="step-num">02</div>
+              <h4>Schedule</h4>
+              <p>Plan your timeline and milestones. We lay down a crystal clear roadmap ensuring zero idle days.</p>
+            </div>
+            <div class="process-step-text" id="process-step-3">
+              <div class="process-arrow"></div>
+              <div class="step-num">03</div>
+              <h4>Consultation</h4>
+              <p>Deep dive into your vision. A detailed conversation about dimensions, lifestyle, needs, and spatial expression.</p>
+            </div>
+            <div class="process-step-text right-side" id="process-step-4">
+              <div class="process-arrow"></div>
+              <div class="step-num">04</div>
+              <h4>Meet</h4>
+              <p>Collaborate with expert designers. Watch our team develop initial concepts and layouts tailored specifically for you.</p>
+            </div>
+            <div class="process-step-text" id="process-step-5">
+              <div class="process-arrow"></div>
+              <div class="step-num">05</div>
+              <h4>The Design</h4>
+              <p>Watch your dreams take shape through stunning 3D renders. We refine every material, texture, and light source.</p>
+            </div>
+            <div class="process-step-text right-side" id="process-step-6">
+              <div class="process-arrow"></div>
+              <div class="step-num">06</div>
+              <h4>Finalize the Code</h4>
+              <p>Sign off on technical blueprints, execution parameters, and the ultimate design code before on-site realization begins.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Client Portfolio (Portfolio Theme: Rich Deep Indigo/Slate) -->
+      <section class="story-panel diagonal-transition portfolio-theme" id="chapter-portfolio">
+        <div class="panel-content full-width-diagonal">
+          <div class="tag">Section 06 // Portfolio</div>
+          <h2>Client Portfolio</h2>
+          <div class="portfolio-showcase-wide">
+            <div class="portfolio-item-card">
+              <h3>Symphony of Love</h3>
+              <p class="meta">Akshay (Mridangam Artist) & Sudharma (Classical Dancer)</p>
+              <p class="desc">A residency capturing artistic rhythms, built into a fluid artistic abode designed around
+                spatial expression.</p>
+              <a href="https://vibarntspaces.in/blogs" target="_blank" class="text-link">Read MS Anusha's Residence Blog
+                →</a>
+            </div>
+            <div class="portfolio-item-card">
+              <h3>Shiv Nadar School, Chennai</h3>
+              <p class="meta">Designed by Dr. B V Doshi (Padma Bhushan Awardee)</p>
+              <p class="desc">Fusing modern aesthetic sensibilities with strong sustainability and environmental air
+                quality focus.</p>
+              <a href="https://vibarntspaces.in/blogs" target="_blank" class="text-link">Explore Campus Design Blog
+                →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8 & 9: Testimonials & Why Choose Us (Testimonial Theme: Platinum White & Midnight Blue Accent) -->
+      <section class="story-panel diagonal-transition testimonial-theme" id="chapter-why-us">
+        <div class="panel-content diagonal-left">
+          <div class="tag">Section 08 // Customer Stories</div>
+          <h2>What Our Customers Have to Say</h2>
+          <div class="testimonial-slider">
+            <blockquote class="testimonial">
+              <p>"Nature holds the key to our aesthetic, intellectual, cognitive, and even spiritual satisfaction.
+                Vibrant Spaces designed a home that perfectly reflects this philosophy, making it feel like a living
+                sanctuary."</p>
+              <cite>— Residential Client, Chennai</cite>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="panel-content diagonal-right">
+          <div class="tag">Section 09 // Why Choose Us</div>
+          <h2>Pioneering Environments</h2>
+          <div class="why-us-grid">
+            <div class="why-card">
+              <h4>World-Class Sustainability</h4>
+              <p>Ensuring top quality space creations like the Shiv Nadar sustainable school campus project.</p>
+            </div>
+            <div class="why-card">
+              <h4>Thriving Atmospheres</h4>
+              <p>Designing classroom and functional workspaces configured for creativity and mental growth.</p>
+            </div>
+            <div class="why-card">
+              <h4>Authentic Representation</h4>
+              <p>Choosing premium materials that represent the brand's identity effortlessly and honestly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 10 & 11: Accreditations & Socials (Social Theme: Deep Burgundy & Soft Cream Accent) -->
+      <section class="story-panel diagonal-transition social-theme" id="chapter-accreditations">
+        <div class="panel-content diagonal-left">
+          <div class="tag">Section 10 // Connect</div>
+          <h2>Social Platforms & Recognition</h2>
+          <p>We actively showcase our latest walkthroughs, designs, and architectural reflections across social
+            channels.</p>
+          <div class="social-cube-container">
+            <div class="social-cube">
+              <a href="https://facebook.com/VibrantSpaces.in/" target="_blank" class="cube-face front">Facebook</a>
+              <a href="https://instagram.com/vibrantspaces.in/" target="_blank" class="cube-face right">Instagram</a>
+              <a href="https://youtube.com/@vibrantspaces" target="_blank" class="cube-face back">YouTube</a>
+              <a href="https://in.pinterest.com/vibrantspacesin/" target="_blank" class="cube-face left">Pinterest</a>
+              <div class="cube-face top">Vibrant</div>
+              <div class="cube-face bottom">Spaces</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-content diagonal-right">
+          <div class="tag">Accreditations</div>
+          <h2>Industry Recognized</h2>
+          <p class="accreditations-desc">Fostering excellence through partnerships with leading structural,
+            architectural, and eco-certified materials organizations across India.</p>
+          <div class="partner-logos">
+            <span class="partner-tag">ISO 9001 Certified</span>
+            <span class="partner-tag">Green Building Council Member</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 12, 13 & 14: Contact, Factory, Commercial (Contact Theme: Obsidian & Lime Highlight) -->
+      <section class="story-panel diagonal-transition contact-theme" id="chapter-contact-details">
+        <div class="panel-content diagonal-left">
+          <div class="tag">Section 12 // Let's Connect</div>
+          <h2>Start Your Project</h2>
+          <p>Contact us to transform your spaces. Schedule a detailed architectural design review session with our top
+            consultants.</p>
+          <div class="contact-actions">
+            <a href="https://vibarntspaces.in/talk-to-us" target="_blank" class="cta-button">
+              Schedule a Consultation
+            </a>
+            <a href="tel:+919543195431" class="tel-link">Call: 95431 95431</a>
+          </div>
+          <div class="extra-service-links">
+            <a href="https://vibarntspaces.in/dream-home/" target="_blank">Dream Home Configurator</a>
+            <a href="https://vibarntspaces.in/services-list/" target="_blank">Full Services Index</a>
+            <a href="https://vibarntspaces.in/luxury-interior-designers-in-chennai" target="_blank">Luxury Designer
+              Profile</a>
+          </div>
+        </div>
+
+        <div class="panel-content diagonal-right">
+          <div class="tag">Section 13 & 14 // Operations</div>
+          <h2>Vibrant Infrastructure</h2>
+          <div class="infra-block">
+            <h4>Manufacturing Unit</h4>
+            <p>Our state of the art factory ensures supreme quality and custom engineering for woodworks.</p>
+            <a href="https://vibarntspaces.in/vibrant-manufacturing-unit" target="_blank" class="text-link">Tour the
+              Factory Unit →</a>
+          </div>
+          <div class="infra-block">
+            <h4>Commercial Service Offering</h4>
+            <p>Bespoke solutions for high-performance commercial and corporate business hubs.</p>
+            <a href="https://vibarntspaces.in/commercial" target="_blank" class="text-link">Explore Commercial Solutions
+              →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 11 & 15: Additional Resources & Footer -->
+      <footer class="footer-panel diagonal-transition" id="chapter-footer">
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="https://vibarntspaces.in/blogs/design-build-factory" target="_blank">For Architects</a>
+            <a href="https://vibarntspaces.in/blogs" target="_blank">Blogs & Articles</a>
+            <a href="https://vibarntspaces.in/awards-and-events" target="_blank">Awards & Events</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="https://vibarntspaces.in/news-and-updates" target="_blank">News & Updates</a>
+            <a href="https://vibarntspaces.in/our-partners" target="_blank">Partners</a>
+            <a href="https://vibarntspaces.in/controls" target="_blank">Controls Page</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="https://vibarntspaces.in/faqs" target="_blank">FAQs</a>
+            <a href="https://vibarntspaces.in/careers" target="_blank">Careers</a>
+            <a href="https://vibarntspaces.in/privacy-policy" target="_blank">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026, All Rights Reserved vibarntspaces.in. Terms & Conditions apply.</p>
+        </div>
+      </footer>
+
+  </main>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>

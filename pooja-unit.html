@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibrant Spaces | Pooja Unit Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    /* Specific styles for collection pages */
+    .collection-hero {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Simple parallax */
+    }
+    .collection-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    .collection-hero h1 {
+      position: relative;
+      font-size: 5rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      z-index: 1;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .collection-content {
+      padding: 6rem 10%;
+      background-color: var(--bg-panel);
+      min-height: 100vh;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+    .collection-content h2 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+    }
+    .collection-content h2:first-child {
+      margin-top: 0;
+    }
+    .collection-content p {
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+    /* Simple fade in animation class */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Dynamic Parallax Background */
+    .dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .parallax-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+    }
+    .shape-1 {
+      width: 400px;
+      height: 400px;
+      background: #ea580c;
+      top: 20%;
+      left: -100px;
+    }
+    .shape-2 {
+      width: 600px;
+      height: 600px;
+      background: #ca8a04;
+      top: 60%;
+      right: -200px;
+    }
+    .shape-3 {
+      width: 300px;
+      height: 300px;
+      background: #b91c1c;
+      top: 80%;
+      left: 30%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="main-header">
+    <div class="header-logo-section">
+      <a href="/" style="text-decoration:none;">
+        <div class="vibrant-logo-text">Vibrant<span>SPACES</span></div>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a href="/kitchen.html">Kitchen</a>
+      <a href="/wardrobe.html">Wardrobe</a>
+      <a href="/pooja-unit.html" style="color:var(--accent-color)">Pooja Unit</a>
+      <a href="/display.html">Display</a>
+      <a href="/furniture.html">Furniture</a>
+      <a href="/wellness-zones.html">Wellness Zones</a>
+    </nav>
+    <a href="tel:9543195431" class="header-phone">95431 95431</a>
+  </header>
+
+  <div class="dynamic-bg">
+    <div class="parallax-shape shape-1"></div>
+    <div class="parallax-shape shape-2"></div>
+    <div class="parallax-shape shape-3"></div>
+  </div>
+
+  <div class="collection-hero" id="hero-section" style="background-image: url('/pooja.png');">
+    <h1 class="hero-title">Pooja Unit</h1>
+  </div>
+
+  <div class="collection-content">
+    <div class="fade-in-section parallax-content alternating-section" data-speed="0.1">
+      <div class="alternating-text">
+        <h2>A Sacred Haven</h2>
+        <p>Start your day with positivity and spiritual energy by creating a Pooja room tailored to your unique preferences. A Pooja room is not just a space in your home; it is a sacred haven that brings peace, tranquility, and divine blessings into your daily routine. Whether you are moving into a new home or looking to redesign your existing space, we offer a wide variety of Pooja room designs that suit your specific needs and aesthetic preferences.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/pooja2.png" alt="Pooja Unit Custom Design">
+      </div>
+    </div>
+
+    <div class="fade-in-section parallax-content alternating-section reverse" data-speed="0.2">
+      <div class="alternating-text">
+        <h2>Customized to Resonate</h2>
+        <p>From traditional designs rich in intricate carvings and brass embellishments to modern, minimalist styles that blend seamlessly with contemporary interiors, we provide a diverse selection to help you craft a space that truly resonates with you. Every individual has their unique way of worship and connection to the divine, which is why we emphasise customisation.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/method-imagine.png" alt="Traditional Pooja Room">
+      </div>
+    </div>
+
+    <div class="fade-in-section parallax-content alternating-section" data-speed="0.15">
+      <div class="alternating-text">
+        <h2>Spiritual Nourishment</h2>
+        <p>Having a well-designed Pooja room helps create an environment where you can meditate, pray, and reflect in peace. Imagine beginning your mornings with calming chants or lighting a diya in a space that feels serene and spiritually nourishing. This daily ritual can set a peaceful tone for the rest of your day, helping you feel more centered and focused.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/chapter5-living.png" alt="Spiritual Space">
+      </div>
+    </div>
+
+    <div class="fade-in-section parallax-content alternating-section reverse" data-speed="0.25">
+      <div class="alternating-text">
+        <h2>Harmony and Good Energy</h2>
+        <p>Beyond aesthetics, a thoughtfully designed Pooja room brings a sense of harmony and good energy into your home. It is an intimate space where you can retreat, connect with your inner self, and practice mindfulness. The energy from a well-maintained Pooja room can permeate throughout your living space, creating a positive, welcoming atmosphere for family members and guests alike.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/office.png" alt="Harmony in design">
+      </div>
+    </div>
+
+    <div class="fade-in-section parallax-content alternating-section" data-speed="0.1">
+      <div class="alternating-text">
+        <h2>Expert Guidance</h2>
+        <p>Our team of experts is here to guide you in creating a Pooja room that reflects your personal taste while ensuring that it adheres to traditional principles of spirituality. We take pride in offering solutions that are functional, aesthetically pleasing, and spiritually enriching. Explore the different ways you can create a Pooja Unit that complements your lifestyle and spiritual needs. Reach out to us today to learn more about how we can help design a space that enhances your spiritual journey and brings joy to your everyday life.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/chapter4-factory.png" alt="Expert consultation">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple intersection observer for scroll animations
+    document.addEventListener("DOMContentLoaded", function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section);
+      });
+
+      // Dynamic Parallax Scroll
+      const shapes = document.querySelectorAll('.parallax-shape');
+      const contents = document.querySelectorAll('.parallax-content');
+      const heroTitle = document.querySelector('.hero-title');
+      const heroSection = document.getElementById('hero-section');
+
+      window.addEventListener('scroll', () => {
+        let scrollY = window.scrollY;
+
+        // Animate hero title
+        if (heroTitle) {
+          heroTitle.style.transform = `translateY(${scrollY * 0.4}px)`;
+          heroTitle.style.opacity = 1 - (scrollY * 0.003);
+        }
+        
+        // Animate hero background position a bit
+        if(heroSection) {
+             heroSection.style.backgroundPositionY = `${scrollY * 0.5}px`;
+        }
+
+        // Animate background shapes
+        shapes.forEach((shape, index) => {
+          const speed = (index + 1) * 0.15;
+          const yPos = -(scrollY * speed);
+          shape.style.transform = `translateY(${yPos}px) rotate(${scrollY * 0.05}deg)`;
+        });
+
+        // Animate content blocks slightly
+        contents.forEach(content => {
+          const speed = parseFloat(content.getAttribute('data-speed'));
+          const yPos = -(scrollY * speed);
+          content.style.transform = `translateY(${yPos}px)`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

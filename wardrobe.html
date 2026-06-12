@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibrant Spaces | Wardrobe Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    /* Specific styles for collection pages */
+    .collection-hero {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* Simple parallax */
+    }
+    .collection-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    .collection-hero h1 {
+      position: relative;
+      font-size: 5rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      z-index: 1;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .collection-content {
+      padding: 6rem 10%;
+      background-color: var(--bg-panel);
+      min-height: 100vh;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+    .collection-content h2 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      margin-top: 4rem;
+    }
+    .collection-content h2:first-child {
+      margin-top: 0;
+    }
+    .collection-content p {
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+    .finishes-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .finishes-list li {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 600;
+    }
+    /* Simple fade in animation class */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Navigation Header -->
+  <header class="main-header">
+    <div class="header-logo-section">
+      <a href="/" style="text-decoration:none;">
+        <div class="vibrant-logo-text">Vibrant<span>SPACES</span></div>
+      </a>
+    </div>
+    <nav class="header-nav">
+      <a href="/kitchen.html">Kitchen</a>
+      <a href="/wardrobe.html" style="color:var(--accent-color)">Wardrobe</a>
+      <a href="/pooja-unit.html">Pooja Unit</a>
+      <a href="/display.html">Display</a>
+      <a href="/furniture.html">Furniture</a>
+      <a href="/wellness-zones.html">Wellness Zones</a>
+    </nav>
+    <a href="tel:9543195431" class="header-phone">95431 95431</a>
+  </header>
+
+  <div class="collection-hero" style="background-image: url('/chapter4-factory.png');">
+    <h1>Wardrobe</h1>
+  </div>
+
+  <div class="collection-content">
+    <div class="fade-in-section alternating-section">
+      <div class="alternating-text">
+        <h2>A Personal Statement</h2>
+        <p>A wardrobe is one of the most personal pieces of furniture in a home. Just like how no two people have the same clothing styles, no two wardrobes can be the same. Where someone would want smaller shelves and multiple cubbies to colour-coordinate their exquisite denim or sweater collection. Others might want long hanging racks to ensure their summer dresses and stunning ethnic wear remain wrinkle-free.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/method-deliver.png" alt="Wardrobe Personalization">
+      </div>
+    </div>
+
+    <div class="fade-in-section alternating-section reverse">
+      <div class="alternating-text">
+        <h2>Game of Wardrobe Tetris</h2>
+        <p>Personalizing wardrobe space is crucial to creating a loveable everyday experience. From pull-down rods to trouser racks and jewellery draws, the best modular wardrobe designers in Chennai ensure every staple item in your closet has its own special home that’s easily accessible. With contemporary designs, sturdy materials and a sleek finish, Vibrant wardrobes put your style, utility and needs above all. So, walk into Vibrant and win the game of wardrobe tetris.</p>
+      </div>
+      <div class="alternating-image">
+        <img src="/method-execute.png" alt="Wardrobe Organizing">
+      </div>
+    </div>
+
+    <div class="fade-in-section alternating-section">
+      <div class="alternating-text">
+        <h2>Types of Wardrobe Doors</h2>
+        <p>Since wardrobes are a long-term purchase, it makes sense to weigh every aspect and decide wisely. Here, we explain the different types of wardrobe doors available so that you can choose wisely depending on the ease of usage, maintenance, and space requirements.</p>
+        <ul class="finishes-list">
+          <li>Sliding Wardrobes</li>
+          <li>Hinged or Swing Wardrobes</li>
+          <li>Bi fold Wardrobes</li>
+        </ul>
+      </div>
+      <div class="alternating-image">
+        <img src="/hero-placeholder.png" alt="Wardrobe Doors">
+      </div>
+    </div>
+
+    <div class="fade-in-section alternating-section reverse" style="margin-top: 4rem;">
+      <div class="alternating-text">
+        <h2>Sliding Wardrobes</h2>
+        <p>Sliding doors are movable doors that glide horizontally along metal channels fixed to the top and bottom of the wardrobe. Given their sleek, contemporary look, sliding doors make a style statement. This type of door doesn’t require much room since it slides to the left or right. If you wish to choose a sliding door, keep in mind that sliding doors work and look best when you have at least two or more doors.</p>
+        <ul class="finishes-list" style="font-size:0.9rem;">
+          <li>Streaks</li>
+          <li>Impression</li>
+          <li>Classical</li>
+          <li>Glaze</li>
+          <li>Highlights</li>
+          <li>Crystal</li>
+          <li>Latitude</li>
+          <li>Mosaic</li>
+          <li>Reflection</li>
+        </ul>
+      </div>
+      <div class="alternating-image">
+        <img src="/chapter4-factory.png" alt="Sliding Wardrobe Options">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple intersection observer for scroll animations
+    document.addEventListener("DOMContentLoaded", function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>
