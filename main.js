@@ -7,7 +7,7 @@ const processCanvas = document.getElementById("process-canvas");
 const processCtx = processCanvas ? processCanvas.getContext("2d") : null;
 const processLoadingOverlay = document.getElementById("process-loading-overlay");
 
-const frameCount = 30;
+const frameCount = 144;
 const images = [];
 let imagesLoaded = 0;
 
@@ -115,7 +115,7 @@ function preloadImages() {
   for (let i = 1; i <= frameCount; i++) {
     const img = new Image();
     const paddedIndex = i.toString().padStart(3, '0');
-    img.src = `/ezgif-12265a4fdd355c0c-jpg/ezgif-frame-${paddedIndex}.jpg`;
+    img.src = `/6-png-split/ezgif-frame-${paddedIndex}.png`;
     img.onload = () => {
       imagesLoaded++;
       if (imagesLoaded === frameCount) {
@@ -138,7 +138,7 @@ function preloadProcessImages() {
   for (let i = 1; i <= processFrameCount; i++) {
     const img = new Image();
     const paddedIndex = i.toString().padStart(3, '0');
-    img.src = `/process-frames/ezgif-frame-${paddedIndex}.jpg`;
+    img.src = `/5-png-split/ezgif-frame-${paddedIndex}.png`;
     img.onload = () => {
       processImagesLoaded++;
       if (processImagesLoaded === processFrameCount && processLoadingOverlay) {
@@ -248,16 +248,16 @@ window.addEventListener("wheel", (e) => {
       // Scrolling Down → advance animation 180→1 (frameProgress decreases)
       if (targetFrame > 1) {
         e.preventDefault();
-        // Scroll step multiplier adjusted to 0.02 for smoother transition over 30 frames
-        frameProgress = Math.max(1, frameProgress - e.deltaY * 0.02);
+        // Scroll step multiplier adjusted to 0.1 for smoother transition over 144 frames
+        frameProgress = Math.max(1, frameProgress - e.deltaY * 0.1);
         targetFrame = Math.max(1, Math.min(frameCount, Math.round(frameProgress)));
       }
     } else if (e.deltaY < 0) {
       // Scrolling Up → reverse back toward frame 30
       if (targetFrame < frameCount) {
         e.preventDefault();
-        // Scroll step multiplier adjusted to 0.02
-        frameProgress = Math.min(frameCount, frameProgress + Math.abs(e.deltaY) * 0.02);
+        // Scroll step multiplier adjusted to 0.1
+        frameProgress = Math.min(frameCount, frameProgress + Math.abs(e.deltaY) * 0.1);
         targetFrame = Math.max(1, Math.min(frameCount, Math.round(frameProgress)));
       }
     }
@@ -283,16 +283,16 @@ window.addEventListener("touchmove", (e) => {
       // Swiping up → 30→1
       if (targetFrame > 1) {
         e.preventDefault();
-        // Touch multiplier adjusted to 0.04
-        frameProgress = Math.max(1, frameProgress - deltaY * 0.04);
+        // Touch multiplier adjusted to 0.2
+        frameProgress = Math.max(1, frameProgress - deltaY * 0.2);
         targetFrame = Math.max(1, Math.min(frameCount, Math.round(frameProgress)));
       }
     } else if (deltaY < 0) {
       // Swiping down → reverse back to 30
       if (targetFrame < frameCount) {
         e.preventDefault();
-        // Touch multiplier adjusted to 0.04
-        frameProgress = Math.min(frameCount, frameProgress + Math.abs(deltaY) * 0.04);
+        // Touch multiplier adjusted to 0.2
+        frameProgress = Math.min(frameCount, frameProgress + Math.abs(deltaY) * 0.2);
         targetFrame = Math.max(1, Math.min(frameCount, Math.round(frameProgress)));
       }
     }
@@ -493,10 +493,10 @@ function panelAnimationLoop() {
   }
 
   // Process canvas scroll section animation
-  currentProcessProgress = lerp(currentProcessProgress, targetProcessProgress, 0.08);
+  currentProcessProgress = lerp(currentProcessProgress, targetProcessProgress, 0.04);
 
   targetProcessFrame = Math.max(1, Math.min(processFrameCount, Math.round(currentProcessProgress * (processFrameCount - 1) + 1)));
-  currentRenderedProcessFrame = lerp(currentRenderedProcessFrame, targetProcessFrame, 0.1);
+  currentRenderedProcessFrame = lerp(currentRenderedProcessFrame, targetProcessFrame, 0.15);
   const pFrameToDraw = Math.round(currentRenderedProcessFrame);
 
   if (pFrameToDraw !== lastDrawnProcessFrame && pFrameToDraw >= 1 && pFrameToDraw <= processFrameCount) {
@@ -518,7 +518,7 @@ function panelAnimationLoop() {
 
       let normDist = distance / (activeWindow * 0.9);
       let absDist = Math.abs(normDist);
-      
+
       // Create a plateau so the grid stays for a little time
       let opacity = 0;
       if (absDist < 0.3) {
@@ -526,9 +526,9 @@ function panelAnimationLoop() {
       } else if (absDist < 1.0) {
         opacity = 1 - (absDist - 0.3) / 0.7;
       }
-      
+
       const dirY = distance > 0 ? 30 : -30;
-      let translateY = -50 + normDist * dirY; 
+      let translateY = -50 + normDist * dirY;
 
       text.style.opacity = opacity;
       text.style.transform = `translateY(${translateY}%)`;
