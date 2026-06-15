@@ -4,27 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vibrant Spaces | Furniture Collection</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css" />
+  
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
   <style>
-    /* Specific styles for collection pages */
+    /* -----------------------------------------
+       Cinematic Collection Styles 
+    ----------------------------------------- */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #smooth-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Anti-Gravity Stickers */
+    .anti-gravity-sticker {
+      position: absolute;
+      z-index: 50;
+      opacity: 0.9;
+      pointer-events: none;
+      transform-origin: center center;
+    }
+
+    /* Hero Section */
     .collection-hero {
       position: relative;
       height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed; /* Simple parallax */
+      overflow: hidden;
     }
-    .collection-hero::before {
-      content: '';
+    .hero-bg-wrapper {
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
+      inset: -5%;
+      z-index: 1;
+    }
+    .hero-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6) blur(4px);
     }
     .collection-hero h1 {
       position: relative;
@@ -32,40 +67,77 @@
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      z-index: 1;
+      z-index: 10;
       text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      margin: 0;
     }
+    .hero-headline-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* Content Layout */
     .collection-content {
-      padding: 6rem 10%;
+      padding: 10rem 10%;
       background-color: var(--bg-panel);
       min-height: 100vh;
       color: var(--text-secondary);
       font-size: 1.2rem;
       line-height: 1.8;
+      position: relative;
+      z-index: 2;
     }
     .collection-content h2 {
       color: #fff;
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 2rem;
-      margin-top: 4rem;
-    }
-    .collection-content h2:first-child {
       margin-top: 0;
+      font-weight: 800;
+      line-height: 1.1;
     }
     .collection-content p {
       margin-bottom: 2rem;
       max-width: 800px;
     }
-    /* Simple fade in animation class */
-    .fade-in-section {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
+
+    /* Alternating Sections (GSAP specific) */
+    .alternating-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      margin-bottom: 12rem;
     }
-    .fade-in-section.is-visible {
-      opacity: 1;
-      transform: none;
+    .alternating-section.reverse {
+      flex-direction: row-reverse;
+    }
+    .alternating-text {
+      flex: 1;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    .alternating-image-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .alternating-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: scale(1.1); /* for gentle scale down reveal */
+    }
+    .image-mask {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-panel);
+      transform-origin: right center;
+      z-index: 5;
+    }
+    .alternating-section.reverse .image-mask {
+      transform-origin: left center;
     }
   </style>
 </head>
@@ -88,35 +160,123 @@
     <a href="tel:9543195431" class="header-phone">95431 95431</a>
   </header>
 
-  <div class="collection-hero" style="background-image: url('/office.png');">
-    <h1>Furniture</h1>
-  </div>
+  <div id="smooth-wrapper">
+    <!-- ANTI-GRAVITY STICKERS -->
+    <img src="/sticker_files/image.png" class="anti-gravity-sticker" style="top: 20vh; left: 5%; width: 200px;" data-rotation="180" data-x="80" data-speed="1.2" alt="" />
+    <img src="/sticker_files/image copy.png" class="anti-gravity-sticker" style="top: 80vh; right: 10%; width: 250px;" data-rotation="-240" data-x="-100" data-speed="0.8" alt="" />
+    <img src="/sticker_files/image copy 2.png" class="anti-gravity-sticker" style="top: 150vh; left: 15%; width: 180px;" data-rotation="360" data-x="120" data-speed="1.4" alt="" />
+    
+    <!-- Hero Section -->
+    <div class="collection-hero">
+      <div class="hero-bg-wrapper">
+        <img src="/office.png" class="hero-bg-image" alt="Furniture Hero" />
+      </div>
+      <h1>
+        <span class="hero-headline-word">Furniture</span>
+      </h1>
+    </div>
 
-  <div class="collection-content">
-    <div class="fade-in-section alternating-section">
-      <div class="alternating-text">
-        <h2>Transform a Space</h2>
-        <p>Furniture can single-handedly transform a space from start to finish, and become the focal point of your interior design. It plays a crucial role while putting a place together. Some of the most creative yet functional spaces are defined by the way furniture is positioned throughout the room.</p>
+    <!-- Content Section -->
+    <div class="collection-content">
+      
+      <!-- Alternating Section 1 -->
+      <div class="alternating-section gs-reveal-section">
+        <div class="alternating-text gs-reveal-text">
+          <h2>Transform a Space</h2>
+          <p>Furniture can single-handedly transform a space from start to finish, and become the focal point of your interior design. It plays a crucial role while putting a place together. Some of the most creative yet functional spaces are defined by the way furniture is positioned throughout the room.</p>
+        </div>
+        <div class="alternating-image-container gs-reveal-img-container">
+          <img src="/next-section-placeholder.png" class="gs-reveal-img" alt="Transform with Furniture">
+          <div class="image-mask"></div>
+        </div>
       </div>
-      <div class="alternating-image">
-        <img src="/next-section-placeholder.png" alt="Transform with Furniture">
-      </div>
+
     </div>
   </div>
 
   <script>
-    // Simple intersection observer for scroll animations
-    document.addEventListener("DOMContentLoaded", function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
+    document.addEventListener("DOMContentLoaded", (event) => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // --- STICKERS PARALLAX & ROTATION ---
+      const stickers = document.querySelectorAll('.anti-gravity-sticker');
+      stickers.forEach(sticker => {
+        const speed = parseFloat(sticker.getAttribute('data-speed')) || 1;
+        const maxRotation = parseFloat(sticker.getAttribute('data-rotation')) || 180;
+        const driftX = parseFloat(sticker.getAttribute('data-x')) || 0;
+
+        gsap.to(sticker, {
+          y: () => -1 * (window.innerHeight * speed),
+          x: driftX,
+          rotation: maxRotation,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#smooth-wrapper",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1.5 
           }
         });
-      }, { threshold: 0.1 });
+      });
 
-      document.querySelectorAll('.fade-in-section').forEach(section => {
-        observer.observe(section);
+      // --- HERO PARALLAX & TEXT FADE ---
+      gsap.to('.hero-bg-wrapper', {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".collection-hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      gsap.to('.hero-headline-word', {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        stagger: 0.15,
+        ease: "power3.out",
+        delay: 0.5
+      });
+
+      // --- ALTERNATING SECTIONS REVEAL ---
+      const revealSections = document.querySelectorAll('.gs-reveal-section');
+      revealSections.forEach(section => {
+        const text = section.querySelector('.gs-reveal-text');
+        const mask = section.querySelector('.image-mask');
+        const img = section.querySelector('.gs-reveal-img');
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 75%",
+            end: "top 25%",
+            toggleActions: "play none none reverse"
+          }
+        });
+
+        // 1. Slide off mask
+        tl.to(mask, {
+          scaleX: 0,
+          duration: 1.2,
+          ease: "power3.inOut"
+        }, 0);
+
+        // 2. Scale image down to 1
+        tl.to(img, {
+          scale: 1,
+          duration: 1.5,
+          ease: "power2.out"
+        }, 0);
+
+        // 3. Fade up text
+        tl.to(text, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out"
+        }, 0.2);
       });
     });
   </script>

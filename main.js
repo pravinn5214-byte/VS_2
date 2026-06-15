@@ -37,8 +37,14 @@ function lerp(start, end, factor) {
 // Determines how we fit the image in the canvas. 
 // We want an 'object-fit: cover' style behavior to fill the background.
 function drawImageCover(img) {
+  // Crop right 15% and bottom 10% from the source image to hide the watermark
+  const sWidth = img.width * 0.85;
+  const sHeight = img.height * 0.90;
+  const sx = 0;
+  const sy = 0;
+
   const canvasRatio = canvas.width / canvas.height;
-  const imgRatio = img.width / img.height;
+  const imgRatio = sWidth / sHeight;
   let renderWidth, renderHeight, x, y;
 
   if (imgRatio > canvasRatio) {
@@ -57,13 +63,20 @@ function drawImageCover(img) {
 
   // Clear canvas before drawing
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(img, x, y, renderWidth, renderHeight);
+  ctx.drawImage(img, sx, sy, sWidth, sHeight, x, y, renderWidth, renderHeight);
 }
 
 function drawProcessImageCover(img) {
   if (!processCanvas || !processCtx) return;
+
+  // Crop right 15% and bottom 10% from the source image to hide the watermark
+  const sWidth = img.width * 0.85;
+  const sHeight = img.height * 0.90;
+  const sx = 0;
+  const sy = 0;
+
   const canvasRatio = processCanvas.width / processCanvas.height;
-  const imgRatio = img.width / img.height;
+  const imgRatio = sWidth / sHeight;
   let renderWidth, renderHeight, x, y;
 
   if (imgRatio > canvasRatio) {
@@ -79,7 +92,7 @@ function drawProcessImageCover(img) {
   }
 
   processCtx.clearRect(0, 0, processCanvas.width, processCanvas.height);
-  processCtx.drawImage(img, x, y, renderWidth, renderHeight);
+  processCtx.drawImage(img, sx, sy, sWidth, sHeight, x, y, renderWidth, renderHeight);
 }
 
 // Ensure the canvas matches its display size
@@ -115,7 +128,7 @@ function preloadImages() {
   for (let i = 1; i <= frameCount; i++) {
     const img = new Image();
     const paddedIndex = i.toString().padStart(3, '0');
-    img.src = `/6-png-split/ezgif-frame-${paddedIndex}.png`;
+    img.src = `/pleasent home page-png-split/ezgif-frame-${paddedIndex}.png`;
     img.onload = () => {
       imagesLoaded++;
       if (imagesLoaded === frameCount) {
@@ -138,7 +151,7 @@ function preloadProcessImages() {
   for (let i = 1; i <= processFrameCount; i++) {
     const img = new Image();
     const paddedIndex = i.toString().padStart(3, '0');
-    img.src = `/5-png-split/ezgif-frame-${paddedIndex}.png`;
+    img.src = `/6- replacement-png-split/ezgif-frame-${paddedIndex}.png`;
     img.onload = () => {
       processImagesLoaded++;
       if (processImagesLoaded === processFrameCount && processLoadingOverlay) {
@@ -495,7 +508,7 @@ function panelAnimationLoop() {
   // Process canvas scroll section animation
   currentProcessProgress = lerp(currentProcessProgress, targetProcessProgress, 0.04);
 
-  targetProcessFrame = Math.max(1, Math.min(processFrameCount, Math.round(currentProcessProgress * (processFrameCount - 1) + 1)));
+  targetProcessFrame = Math.max(1, Math.min(processFrameCount, Math.round(targetProcessProgress * (processFrameCount - 1) + 1)));
   currentRenderedProcessFrame = lerp(currentRenderedProcessFrame, targetProcessFrame, 0.15);
   const pFrameToDraw = Math.round(currentRenderedProcessFrame);
 

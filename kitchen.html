@@ -1,90 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vibrant Spaces | Kitchen Collection</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Global Styles -->
   <link rel="stylesheet" href="/style.css" />
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <style>
-    /* Specific styles for collection pages */
-    .collection-hero {
+    /* -----------------------------------------
+       Kitchen Specific Cinematic Styles 
+    ----------------------------------------- */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    #kitchen-smooth-wrapper {
       position: relative;
-      height: 70vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Typography */
+    .k-headline {
+      font-size: 5vw;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .k-subhead {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 600px;
+      margin-top: 2rem;
+    }
+
+    /* Anti-Gravity Stickers */
+    .anti-gravity-sticker {
+      position: absolute;
+      z-index: 50;
+      opacity: 0.9;
+      pointer-events: none;
+      transform-origin: center center;
+    }
+
+    /* Section 1: Intro */
+    #s1-intro {
+      position: relative;
+      height: 100vh;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-image: url('/kitchen/image.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed; /* Simple parallax */
+      overflow: hidden;
     }
-    .collection-hero::before {
-      content: '';
+
+    .s1-bg-wrapper {
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-    }
-    .collection-hero h1 {
-      position: relative;
-      font-size: 5rem;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      inset: -5%;
+      /* slightly larger for parallax bleed */
       z-index: 1;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-    .collection-content {
-      padding: 6rem 10%;
-      background-color: var(--bg-panel);
-      min-height: 100vh;
-      color: var(--text-secondary);
-      font-size: 1.2rem;
-      line-height: 1.8;
+
+    .s1-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6) blur(4px);
     }
-    .collection-content h2 {
-      color: #fff;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      margin-top: 4rem;
+
+    .s1-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 5%;
     }
-    .collection-content h2:first-child {
-      margin-top: 0;
-    }
-    .collection-content p {
-      margin-bottom: 2rem;
-      max-width: 800px;
-    }
-    .finishes-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .finishes-list li {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      color: #fff;
-      font-weight: 600;
-    }
-    /* Simple fade in animation class */
-    .fade-in-section {
+
+    .s1-headline-word {
+      display: inline-block;
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
     }
-    .fade-in-section.is-visible {
-      opacity: 1;
-      transform: none;
+
+    /* Section 2: Crafted Finishes Gallery */
+    #s2-finishes {
+      position: relative;
+      padding: 15vh 10%;
+      min-height: 120vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(to bottom, var(--bg-color), #0a0a0a);
+      z-index: 2;
+    }
+
+    .s2-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 5rem;
+      text-align: left;
+    }
+
+    .finishes-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      position: relative;
+    }
+
+    .finish-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      width: calc(33% - 2rem);
+      min-width: 250px;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.4s ease;
+      position: relative;
+    }
+
+    .finish-card h3 {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    .finish-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Section 3: Modular Intelligence Reveal */
+    #s3-modular {
+      position: relative;
+      height: 150vh;
+      /* Extra height for scrolling */
+      padding: 10vh 10%;
+      background: #0a0a0a;
+    }
+
+    .modular-sticky {
+      position: sticky;
+      top: 15vh;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+    }
+
+    .modular-text {
+      flex: 1;
+    }
+
+    .modular-image-container {
+      flex: 1.5;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .modular-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modular-mask-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a0a;
+      transform-origin: right center;
+    }
+
+
+    /* Section 5: Smart Storage */
+    #s5-storage {
+      position: relative;
+      padding: 15vh 10%;
+      background: #0d0d0d;
+      min-height: 120vh;
+    }
+
+    .storage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .storage-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .storage-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .storage-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .storage-caption {
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+      color: #fff;
+      border-left: 2px solid var(--accent-color);
+      padding-left: 1rem;
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    /* Section 6: Designed Around You */
+    #s6-lifestyle {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--bg-color);
+    }
+
+    .lifestyle-bg {
+      position: absolute;
+      inset: -5%;
+      width: 110%;
+      height: 110%;
+      object-fit: cover;
+      filter: brightness(0.7) blur(4px);
+      z-index: 1;
+    }
+
+    .lifestyle-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .lifestyle-content h2 {
+      font-size: 6vw;
+      font-weight: 800;
+      background: linear-gradient(to bottom, #fff, #aaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      opacity: 0;
+    }
+
+    .lifestyle-content p {
+      font-size: 1.5rem;
+      color: #ccc;
+      opacity: 0;
+    }
+
+    /* Global Section Divider */
+    .section-divider {
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     }
   </style>
 </head>
+
 <body>
   <!-- Global Navigation Header -->
   <header class="main-header">
@@ -104,63 +319,296 @@
     <a href="tel:9543195431" class="header-phone">95431 95431</a>
   </header>
 
-  <div class="collection-hero" style="background-image: url('/kitchen/image.png');">
-    <h1>Kitchen</h1>
-  </div>
+  <div id="kitchen-smooth-wrapper">
 
-  <div class="collection-content">
-    <div class="fade-in-section alternating-section">
-      <div class="alternating-text">
-        <h2>The Heart of the House</h2>
-        <p>A kitchen – sometimes called the heart of the house – is more than just a place to cook. It’s a place for love, experimentation, and a place to explore your boundless creativity. It can be a hangout spot for catching up over morning coffee or morph into a workspace for master chefs in training.</p>
-      </div>
-      <div class="alternating-image">
-        <img src="/kitchen/image copy.png" alt="Kitchen Concept">
-      </div>
-    </div>
+    <!-- ANTI-GRAVITY STICKERS (Layered globally across the scrolling view) -->
+    <!-- Tossed Stickers with larger rotations -->
+    <!-- Sticker 1: Botanical -->
+    <img src="/sticker_files/image copy.png" class="anti-gravity-sticker" style="top: 15vh; left: 10%; width: 250px;"
+      data-rotation="180" data-x="100" data-speed="1.2" alt="" />
+    <!-- Sticker 2: Blueprint -->
+    <img src="/sticker_files/image copy.png" class="anti-gravity-sticker" style="top: 80vh; right: 5%; width: 300px;"
+      data-rotation="-240" data-x="-150" data-speed="0.8" alt="" />
+    <!-- Sticker 3: Material Swatch -->
+    <img src="/sticker_files/image copy 2.png" class="anti-gravity-sticker" style="top: 140vh; left: 15%; width: 200px;"
+      data-rotation="360" data-x="80" data-speed="1.5" alt="" />
+    <!-- Sticker 4: Sketch -->
+    <img src="/sticker_files/image copy 3.png" class="anti-gravity-sticker"
+      style="top: 250vh; right: 10%; width: 280px;" data-rotation="-180" data-x="-120" data-speed="0.9" alt="" />
+    <!-- Sticker 5: Detail -->
+    <img src="/sticker_files/image copy 4.png" class="anti-gravity-sticker" style="top: 360vh; left: 20%; width: 180px;"
+      data-rotation="270" data-x="100" data-speed="1.1" alt="" />
 
-    <div class="fade-in-section alternating-section reverse">
-      <div class="alternating-text">
-        <h2>Evolving Spaces</h2>
-        <p>Kitchens have evolved from their traditional purpose of just housing kitchen equipment. For instance, many of the best modular kitchen interior designers in Chennai now add a counter/nook that serves as a breakfast table, or even an exclusive corner for your home bar. Thanks to innovative modular solutions, you can create a kitchen of any shape, size or form. From wood to vinyl, to the style of your cabinets – personalize this space to your heart’s content.</p>
-      </div>
-      <div class="alternating-image">
-        <img src="/kitchen/image copy 2.png" alt="Kitchen Craftsmanship">
-      </div>
-    </div>
 
-    <div class="fade-in-section alternating-section">
-      <div class="alternating-text">
-        <h2>Types of Kitchen Finishes</h2>
-        <ul class="finishes-list">
-          <li>PU finish</li>
-          <li>Glass finish</li>
-          <li>Laminate finish</li>
-          <li>Acrylic finish</li>
-          <li>Veneer finish</li>
-        </ul>
+    <!-- 1. Emotional Introduction -->
+    <section id="s1-intro">
+      <div class="s1-bg-wrapper">
+        <img src="/kitchen/image.png" class="s1-bg-image" alt="Kitchen Setup" />
       </div>
-      <div class="alternating-image">
-        <img src="/kitchen/image copy 3.png" alt="Kitchen Finishes">
+      <div class="s1-content">
+        <h1 class="k-headline" id="s1-headline">
+          <span class="s1-headline-word">Kitchen</span>
+          <span class="s1-headline-word">—</span>
+          <span class="s1-headline-word">The</span>
+          <span class="s1-headline-word">Heart</span>
+          <span class="s1-headline-word">of</span>
+          <span class="s1-headline-word">the</span>
+          <span class="s1-headline-word">Home</span>
+        </h1>
+        <p class="k-subhead" id="s1-subhead">Every beautiful story begins with a gathering. Discover the art of timeless
+          culinary architecture.</p>
       </div>
-    </div>
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- 2. Crafted Finishes Gallery -->
+    <section id="s2-finishes">
+      <h2 class="s2-title">Crafted Finishes</h2>
+      <div class="finishes-container">
+        <div class="finish-card" data-speed="1.1">
+          <h3>PU Finish</h3>
+          <p>A flawless, high-gloss polyurethane coat ensuring premium durability and liquid-like reflection.</p>
+        </div>
+        <div class="finish-card" data-speed="0.9">
+          <h3>Glass Finish</h3>
+          <p>Toughened, back-painted glass offering a sleek, ultra-modern aesthetic with effortless maintenance.</p>
+        </div>
+        <div class="finish-card" data-speed="1.2">
+          <h3>Laminate Finish</h3>
+          <p>Robust, scratch-resistant textures that bring deep, warm organic tones into everyday spaces.</p>
+        </div>
+        <div class="finish-card" data-speed="0.8">
+          <h3>Acrylic Finish</h3>
+          <p>Brilliant, non-toxic surfacing with unparalleled color consistency and structural longevity.</p>
+        </div>
+        <div class="finish-card" data-speed="1.15">
+          <h3>Veneer Finish</h3>
+          <p>Authentic, hand-selected natural wood grain sheets embodying timeless, bespoke craftsmanship.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Modular Intelligence Reveal -->
+    <section id="s3-modular">
+      <div class="modular-sticky">
+        <div class="modular-text">
+          <h2 class="k-headline" style="font-size: 4rem;">Modular<br>Intelligence</h2>
+          <p class="k-subhead">Drawers that anticipate. Doors that vanish. An architecture that moves gracefully with
+            you.</p>
+        </div>
+        <div class="modular-image-container">
+          <img src="/kitchen/image copy 2.png" class="modular-image" id="mod-img" alt="Modular Cabinetry" />
+          <!-- A masking div simulating a sliding cabinet reveal -->
+          <div class="modular-mask-overlay" id="mod-mask"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- 5. Smart Storage Showcase -->
+    <section id="s5-storage">
+      <div class="storage-grid">
+        <div class="storage-item">
+          <img src="/kitchen/image copy 4.png" alt="Smart Pull-out" />
+          <p class="storage-caption">Tandem boxes gliding silently into place.</p>
+        </div>
+        <div class="storage-item" style="margin-top: 10rem;">
+          <img src="/kitchen/image copy 5.png" alt="Corner Carousel" />
+          <p class="storage-caption">Seamless corner carousel interactions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Designed Around You -->
+    <section id="s6-lifestyle">
+      <img src="/kitchen/image copy 3.png" class="lifestyle-bg" alt="Kitchen Lifestyle" />
+      <div class="lifestyle-content">
+        <h2 id="s6-headline">Designed Around You</h2>
+        <p id="s6-subhead">Spaces that adapt beautifully to the way you live.</p>
+      </div>
+    </section>
+
   </div>
 
   <script>
-    // Simple intersection observer for scroll animations
-    document.addEventListener("DOMContentLoaded", function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
+    // Wait for DOM
+    document.addEventListener("DOMContentLoaded", (event) => {
+      // Register GSAP plugins
+      gsap.registerPlugin(ScrollTrigger);
+
+      // --- STICKERS PARALLAX & ROTATION ---
+      const stickers = document.querySelectorAll('.anti-gravity-sticker');
+      stickers.forEach(sticker => {
+        const speed = parseFloat(sticker.getAttribute('data-speed')) || 1;
+        const maxRotation = parseFloat(sticker.getAttribute('data-rotation')) || 180;
+        const driftX = parseFloat(sticker.getAttribute('data-x')) || 0;
+
+        // The sticker translates vertically based on speed, rotates dynamically, and drifts slightly on X
+        gsap.to(sticker, {
+          y: () => -1 * (window.innerHeight * speed),
+          x: driftX,
+          rotation: maxRotation,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#kitchen-smooth-wrapper",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1.5 // 1.5 seconds smoothing
           }
         });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.fade-in-section').forEach(section => {
-        observer.observe(section);
       });
+
+      // --- SECTION 1: INTRO ---
+      // Upward parallax on the background image
+      gsap.to('.s1-bg-wrapper', {
+        yPercent: 20,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#s1-intro",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // Fade in headline words
+      gsap.to('.s1-headline-word', {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        stagger: 0.15,
+        ease: "power3.out",
+        delay: 0.5
+      });
+      // Fade in subhead
+      gsap.fromTo('#s1-subhead',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 1.2 }
+      );
+
+      // --- SECTION 2: CRAFTED FINISHES ---
+      // Parallax depths for finish cards
+      const finishCards = document.querySelectorAll('.finish-card');
+      finishCards.forEach(card => {
+        const speed = parseFloat(card.getAttribute('data-speed'));
+        // They start slightly lower and scrub upwards at different rates
+        gsap.fromTo(card,
+          { y: 100 * speed },
+          {
+            y: -50 * speed,
+            ease: "none",
+            scrollTrigger: {
+              trigger: "#s2-finishes",
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1
+            }
+          }
+        );
+      });
+
+      // --- SECTION 3: MODULAR INTELLIGENCE ---
+      // Reveal the image by sliding a mask off to the right
+      gsap.to('#mod-mask', {
+        scaleX: 0, // shrink mask to reveal image underneath
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#s3-modular",
+          start: "top center",
+          end: "+=50%",
+          scrub: 1
+        }
+      });
+      // Gentle scale on the image itself
+      gsap.fromTo('#mod-img',
+        { scale: 1.1 },
+        {
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#s3-modular",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1
+          }
+        }
+      );
+
+
+
+      // --- SECTION 5: SMART STORAGE ---
+      const storageItems = document.querySelectorAll('.storage-item');
+      storageItems.forEach(item => {
+        const caption = item.querySelector('.storage-caption');
+
+        // Gentle upward drift for the whole item
+        gsap.fromTo(item,
+          { y: 50 },
+          {
+            y: -50,
+            ease: "none",
+            scrollTrigger: {
+              trigger: item,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1
+            }
+          }
+        );
+
+        // Slide in the caption as it enters center screen
+        gsap.to(caption, {
+          opacity: 1,
+          x: 0,
+          scrollTrigger: {
+            trigger: item,
+            start: "top 60%",
+            end: "top 40%",
+            scrub: true
+          }
+        });
+      });
+
+      // --- SECTION 6: DESIGNED AROUND YOU ---
+      const tlLifestyle = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#s6-lifestyle",
+          start: "top center",
+          end: "bottom bottom"
+        }
+      });
+
+      // Subtle zoom out of the background to settle it
+      gsap.fromTo('.lifestyle-bg',
+        { scale: 1.1, filter: "brightness(0.4) blur(4px)" },
+        {
+          scale: 1,
+          filter: "brightness(0.8) blur(4px)",
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#s6-lifestyle",
+            start: "top bottom",
+            end: "center center",
+            scrub: true
+          }
+        }
+      );
+
+      tlLifestyle.to('#s6-headline', {
+        opacity: 1,
+        y: -10,
+        duration: 1,
+        ease: "power3.out"
+      })
+        .to('#s6-subhead', {
+          opacity: 1,
+          y: -10,
+          duration: 1,
+          ease: "power3.out"
+        }, "-=0.6");
     });
   </script>
 </body>
+
 </html>
