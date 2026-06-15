@@ -188,39 +188,37 @@ function initAnimation() {
     if (introTransitioned) return;
     introTransitioned = true;
 
-    // Pause video if skipping
-    introVideo.pause();
+    if (introVideo) {
+      introVideo.pause();
+    }
 
-    // Transition overlay out
-    introContainer.classList.add("fade-out");
+    if (introContainer) {
+      introContainer.classList.add("fade-out");
+      setTimeout(() => {
+        introContainer.style.display = "none";
+      }, 1200);
+    }
+    
+    document.body.classList.remove("intro-active");
 
-    setTimeout(() => {
-      introContainer.style.display = "none";
-      document.body.classList.remove("intro-active");
-
-      const scrollWrapper = document.querySelector(".hero-scroll-wrapper");
+    const scrollWrapper = document.querySelector(".hero-scroll-wrapper");
+    if (scrollWrapper) {
       scrollWrapper.classList.add("loaded");
+    }
 
-      // Initial canvas sizing and draw
-      resizeCanvas();
+    // Initial canvas sizing and draw
+    resizeCanvas();
 
-      // Start scroll and resize listeners
-      window.addEventListener("scroll", handleScroll);
-      window.addEventListener("resize", resizeCanvas);
+    // Start scroll and resize listeners
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", resizeCanvas);
 
-      // Trigger initial scroll calculations
-      handleScroll();
-    }, 1200); // Wait for CSS transition
+    // Trigger initial scroll calculations
+    handleScroll();
   }
 
-  // When video ends, automatically transition
-  introVideo.addEventListener("ended", transitionToHero);
-
-  // Skip button click
-  skipButton.addEventListener("click", transitionToHero);
-
-  // Also transition if video fails to load or play
-  introVideo.addEventListener("error", transitionToHero);
+  // Bypass intro immediately since the video is missing
+  transitionToHero();
 
   // Start the continuous render loop
   requestAnimationFrame(renderLoop);
@@ -233,7 +231,7 @@ function renderLoop() {
   const frameToDraw = Math.round(currentRenderedFrame);
 
   if (frameToDraw !== lastDrawnFrame && frameToDraw >= 1 && frameToDraw <= frameCount) {
-    if (images[frameToDraw] && images[frameToDraw].complete) {
+    if (images[frameToDraw] && images[frameToDraw].complete && images[frameToDraw].naturalWidth > 0) {
       drawImageCover(images[frameToDraw]);
     }
     lastDrawnFrame = frameToDraw;
@@ -513,7 +511,7 @@ function panelAnimationLoop() {
   const pFrameToDraw = Math.round(currentRenderedProcessFrame);
 
   if (pFrameToDraw !== lastDrawnProcessFrame && pFrameToDraw >= 1 && pFrameToDraw <= processFrameCount) {
-    if (processImages[pFrameToDraw] && processImages[pFrameToDraw].complete) {
+    if (processImages[pFrameToDraw] && processImages[pFrameToDraw].complete && processImages[pFrameToDraw].naturalWidth > 0) {
       drawProcessImageCover(processImages[pFrameToDraw]);
     }
     lastDrawnProcessFrame = pFrameToDraw;
